@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Тетрис</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +23,8 @@
     -webkit-tap-highlight-color:transparent;
     overflow-x:hidden;
     background:#f0f4ff;
+    overscroll-behavior:none;
+    touch-action:manipulation;
   }
 
   #bg{
@@ -78,30 +80,26 @@
     50%    {filter:brightness(1.12)}
   }
   .logo .letter .cell.empty{visibility:hidden}
-
   .screen p.sub{
     margin:16px 0 24px;
     font-family: 'Fraunces', ui-serif, Georgia, serif;
     font-style: italic; font-weight: 500;
     font-size: 15px; color:#8894b0;
-    text-align:center; letter-spacing:.4px;
   }
   .field{margin-bottom:14px; text-align:left}
   .field label{
     display:block;
     font-family: 'Fraunces', ui-serif, Georgia, serif;
     font-style: italic; font-size: 15px; font-weight: 500;
-    color:#8894b0; margin-bottom: 8px;
-    letter-spacing:.4px; text-align:center;
+    color:#8894b0; margin-bottom: 8px; text-align:center;
   }
   .field input{
     width:100%; padding:13px 16px;
     background:rgba(255,255,255,.75); color:#1a2233;
     border:2px solid rgba(120,140,200,.22); border-radius:12px;
     font-family:inherit; font-size:15px; font-weight:500;
-    outline:none;
+    outline:none; text-align:center;
     transition:border-color .15s, background .15s, box-shadow .15s;
-    text-align:center; letter-spacing:.3px;
   }
   .field input::placeholder{color:#b0bcd8; font-weight:400; font-style:italic}
   .field input:focus{
@@ -114,19 +112,17 @@
     letter-spacing:1.6px; cursor:pointer;
     border:none; border-radius:12px; margin-top:8px;
     text-transform:uppercase;
-    transition:transform .08s, box-shadow .15s, filter .15s;
   }
   .btn:active{transform:translateY(1px)}
   .btn-primary{
     background:linear-gradient(135deg,#4cc9f0,#a855f7);
     color:#fff; box-shadow:0 8px 22px rgba(76,201,240,.35);
   }
-  .btn-primary:hover{filter:brightness(1.07)}
   .err{
     margin-top:12px; padding:10px 12px;
     background:rgba(255,60,90,.1); border:1px solid rgba(255,60,90,.35);
-    color:#c00a37; font-size:12px; font-weight:500;
-    border-radius:12px; text-align:center; display:none;
+    color:#c00a37; font-size:12px; border-radius:12px; text-align:center;
+    display:none;
   }
   .err.show{display:block}
   .profile-pick{
@@ -139,17 +135,15 @@
     margin:0 0 12px;
     font-family: 'Fraunces', ui-serif, Georgia, serif;
     font-style: italic; font-weight: 500; font-size: 16px;
-    color:#8894b0; letter-spacing:.4px; text-align:center;
+    color:#8894b0; text-align:center;
   }
   .profile-pick .item{
     display:flex; justify-content:space-between; align-items:center;
-    padding:10px 14px; background:#fff;
-    margin-bottom:6px; border-radius:10px;
+    padding:10px 14px; background:#fff; margin-bottom:6px; border-radius:10px;
     border:2px solid transparent; cursor:pointer; font-size:13px;
-    transition:border-color .12s, transform .08s;
   }
   .profile-pick .item:last-child{margin-bottom:0}
-  .profile-pick .item:hover{border-color:#4cc9f0; transform:translateX(3px)}
+  .profile-pick .item:hover{border-color:#4cc9f0}
   .profile-pick .item .nick{
     font-family: 'Fraunces', ui-serif, Georgia, serif;
     font-weight: 600; font-size: 14px;
@@ -159,8 +153,7 @@
     font-family: 'Fraunces', ui-serif, Georgia, serif;
   }
   .profile-pick .item .del{
-    margin-left:10px; color:#c8d2e6; padding:0 5px;
-    font-weight:600; font-size:14px;
+    margin-left:10px; color:#c8d2e6; padding:0 5px; font-size:14px;
   }
   .profile-pick .item .del:hover{color:#ff3b60}
 
@@ -178,15 +171,12 @@
   .topbar .user{
     color:#1a2233; font-weight:600; font-size:15px;
     font-family:'Fraunces', ui-serif, Georgia, serif;
-    display:block; text-align:left;
   }
   .topbar .user small{
     color:#8894b0; font-weight:500; font-size:12px;
     font-family:'Fraunces', ui-serif, Georgia, serif;
-    font-style: italic;
-    display:block; margin-top:2px;
+    font-style: italic; display:block; margin-top:2px;
   }
-  .topbar-actions{display:flex; gap:8px}
   .topbar-actions button{
     padding:8px 14px;
     background:rgba(255,255,255,.7); color:#8894b0;
@@ -195,8 +185,6 @@
     font-weight:700; letter-spacing:1.4px;
     text-transform:uppercase;
   }
-
-  /* ── Основная раскладка ── */
   .layout{
     display:flex; gap:16px; align-items:flex-start;
     justify-content:center; flex-wrap:wrap;
@@ -207,33 +195,30 @@
     margin:0 0 10px;
     font-family: 'Fraunces', ui-serif, Georgia, serif;
     font-style: italic; font-size:15px; color:#8894b0;
-    letter-spacing:.4px; text-align:center; font-weight:500;
+    text-align:center; font-weight:500;
   }
   canvas{display:block; background:#fff; image-rendering:pixelated}
-
   #board{
     border-radius:16px;
     border:3px solid rgba(255,255,255,.95);
     box-shadow:0 12px 32px rgba(80,110,180,.22), inset 0 0 0 1px rgba(120,140,200,.15);
   }
   #hold,#next{
-    border-radius:10px;
-    border:2px solid rgba(120,140,200,.18);
+    border-radius:10px; border:2px solid rgba(120,140,200,.18);
     width:100%; height:auto; background:#fafbff;
     margin:0 auto;
   }
   .stat{
     display:flex; flex-direction:column; align-items:center;
     font-size:10px; color:#8894b0; padding:6px 2px;
-    letter-spacing:1.6px; text-align:center;
-    text-transform:uppercase; font-weight:600;
+    letter-spacing:1.6px; text-transform:uppercase; font-weight:600;
   }
   .stat span{display:block; margin-bottom:2px}
   .stat b{
     color:#1a2233; font-size:19px;
     font-variant-numeric:tabular-nums;
-    font-weight:600; display:block;
     font-family:'Fraunces', ui-serif, Georgia, serif;
+    font-weight:600;
   }
   .stat.best b{
     background:linear-gradient(90deg,#ff8c00,#ff3b60);
@@ -251,8 +236,7 @@
   .lb td{
     padding:7px 4px;
     border-bottom:1px solid rgba(120,140,200,.07);
-    color:#3a4a66; font-weight:500;
-    text-align:center; font-size:13px;
+    color:#3a4a66; text-align:center; font-size:13px;
   }
   .lb td:nth-child(2){
     font-family:'Fraunces', ui-serif, Georgia, serif;
@@ -266,31 +250,8 @@
     font-family:'Fraunces', ui-serif, Georgia, serif;
   }
 
-  /* ── Кнопки для тача ── */
-  .touch{
-    display:none;
-    gap:6px;
-    margin-top:12px;
-    user-select:none;
-  }
-  .touch button{
-    flex:1;
-    padding:16px 0;
-    font-size:22px;
-    background:rgba(255,255,255,.85);
-    color:#1a2233;
-    border:2px solid rgba(255,255,255,.95);
-    border-radius:14px;
-    font-family:inherit; font-weight:700;
-    touch-action:none; cursor:pointer;
-    box-shadow:0 6px 16px rgba(80,110,180,.18);
-    transition:transform .08s, background .15s;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .touch button:active{
-    transform:translateY(2px);
-    background:#fff;
-  }
+  /* ═══ КНОПКИ УПРАВЛЕНИЯ (только для десктопа, скрыто по умолчанию) ═══ */
+  .touch{display:none}
 
   /* ═══ МОДАЛКА ═══ */
   .modal-bg{
@@ -316,16 +277,16 @@
   .modal h2{
     margin:0 0 6px;
     font-family:'Fraunces', ui-serif, Georgia, serif;
-    font-style: italic; font-size:24px;
-    font-weight:600; color:#ff3b60;
+    font-style: italic; font-size:24px; color:#ff3b60;
   }
   .modal .final{
     font-size:52px; margin:18px 0 8px;
-    font-variant-numeric:tabular-nums; font-weight:700;
+    font-variant-numeric:tabular-nums;
     background:linear-gradient(135deg,#4cc9f0,#a855f7);
     -webkit-background-clip:text; background-clip:text;
     color:transparent;
     font-family:'Fraunces', ui-serif, Georgia, serif;
+    font-weight:700;
   }
   .modal .details{
     color:#8894b0; font-size:14px; margin-bottom:18px;
@@ -338,13 +299,12 @@
     color:#fff; padding:7px 18px; border-radius:22px;
     font-size:11px; font-weight:700; letter-spacing:1.8px;
     margin-bottom:16px; text-transform:uppercase;
-    box-shadow:0 8px 20px rgba(255,140,0,.4);
   }
   .modal .record-badge.hidden{display:none}
 
-  /* ══════════════════════════════════════
-     МОБИЛЬНАЯ ВЕРСИЯ
-     ══════════════════════════════════════ */
+  /* ═══════════════════════════════════════════
+     МОБИЛЬНАЯ ВЕРСИЯ + ДЖОЙСТИК
+     ═══════════════════════════════════════════ */
   @media (max-width:820px){
     body{
       align-items:stretch;
@@ -352,7 +312,6 @@
       min-height:100dvh;
       overflow:hidden;
     }
-
     #app{
       display:none;
       width:100%;
@@ -363,22 +322,19 @@
     }
     #app.active{display:flex}
 
-    /* Шапка — компактная */
     .topbar{
-      padding:8px 12px;
+      padding:6px 12px;
       margin-bottom:0;
       border-radius:0;
       border-left:none; border-right:none; border-top:none;
       flex-shrink:0;
     }
-    .topbar .user{font-size:13px}
-    .topbar .user small{font-size:11px}
+    .topbar .user{font-size:12px}
+    .topbar .user small{font-size:10px}
     .topbar-actions button{
-      padding:6px 10px; font-size:9px;
-      letter-spacing:1px;
+      padding:5px 10px; font-size:9px;
     }
 
-    /* Основная раскладка — колонка */
     .layout{
       flex:1;
       display:flex;
@@ -390,11 +346,11 @@
       overflow:hidden;
     }
 
-    /* Боковые панели исчезают, но их содержимое переезжает в верхнюю полосу */
+    /* Верхняя полоса со статистикой */
     .side{
       flex-direction:row;
       width:100%;
-      gap:6px;
+      gap:4px;
       padding:6px 8px;
       flex-shrink:0;
     }
@@ -402,16 +358,11 @@
     .side.left{order:1}
     .side .panel{
       flex:1;
-      padding:6px 4px;
+      padding:5px 4px;
       border-radius:10px;
       min-width:0;
     }
-    .side .panel h2{
-      font-size:10px;
-      margin:0 0 3px;
-      letter-spacing:.3px;
-    }
-    /* Прячем превью фигур — они занимают слишком много места */
+    .side .panel h2{display:none}
     .side .panel:has(#hold),
     .side .panel:has(#next){
       display:none;
@@ -421,20 +372,15 @@
       flex-direction:row;
       justify-content:space-around;
       align-items:center;
-      gap:4px;
+      gap:2px;
     }
-    .side .panel:has(.stat) h2{display:none}
     .side .stat{
-      padding:0;
-      font-size:9px;
-      letter-spacing:.6px;
-      flex:1;
-      min-width:0;
+      padding:0; font-size:9px;
+      letter-spacing:.6px; flex:1; min-width:0;
     }
     .side .stat span{margin-bottom:1px}
-    .side .stat b{font-size:15px}
+    .side .stat b{font-size:14px}
 
-    /* Поле — занимает всё свободное место */
     #board{
       flex:1;
       width:auto;
@@ -443,53 +389,194 @@
       max-height:100%;
       margin:0 auto;
       display:block;
-      border-radius:12px;
+      border-radius:10px;
       min-height:0;
       align-self:center;
     }
 
-    /* Таблица лидеров — сворачивается внизу */
-    .lb{
-      display:none;
-    }
+    .lb{display:none}
 
-    /* Тач-кнопки — закреплены снизу */
-    .touch{
+    /* ═══════ ДЖОЙСТИК ═══════ */
+    .controls{
       display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+      gap:16px;
       flex-shrink:0;
-      margin:0;
-      padding:8px 8px calc(8px + env(safe-area-inset-bottom, 0px));
-      gap:6px;
-      background:rgba(255,255,255,.7);
+      background:rgba(255,255,255,.6);
       backdrop-filter:blur(10px);
       -webkit-backdrop-filter:blur(10px);
       border-top:1px solid rgba(120,140,200,.15);
-    }
-    .touch button{
-      padding:14px 0;
-      font-size:20px;
-      border-radius:12px;
+      touch-action:none;
     }
 
-    /* Модалка */
+    /* ── Джойстик ── */
+    .joystick{
+      position:relative;
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(255,255,255,.95) 0%, rgba(240,244,255,.85) 100%);
+      border:2px solid rgba(120,140,200,.25);
+      box-shadow:
+        0 8px 24px rgba(80,110,180,.18),
+        inset 0 2px 6px rgba(80,110,180,.08);
+      touch-action:none;
+      flex-shrink:0;
+      overflow:hidden;
+    }
+    /* Стрелки-подсказки внутри джойстика */
+    .joystick::before,
+    .joystick::after{
+      content:"";
+      position:absolute;
+      left:50%; top:50%;
+      transform:translate(-50%,-50%);
+      color:rgba(120,140,200,.35);
+      font-size:20px;
+      pointer-events:none;
+    }
+    .joystick::before{
+      content:"‹";
+      top:50%;
+      left:8px;
+      transform:translateY(-50%);
+      font-size:22px;
+    }
+    .joystick::after{
+      content:"›";
+      top:50%;
+      right:8px;
+      left:auto;
+      transform:translateY(-50%);
+      font-size:22px;
+    }
+    /* Область-крестовина: визуальные подсказки направлений */
+    .joy-hint{
+      position:absolute;
+      pointer-events:none;
+      color:rgba(120,140,200,.3);
+      font-size:14px;
+      font-weight:700;
+      transition:color .12s;
+    }
+    .joy-hint.top{top:8px; left:50%; transform:translateX(-50%)}
+    .joy-hint.bottom{bottom:8px; left:50%; transform:translateX(-50%)}
+    .joy-hint.left{left:8px; top:50%; transform:translateY(-50%)}
+    .joy-hint.right{right:8px; top:50%; transform:translateY(-50%)}
+    .joy-hint.active{color:#4cc9f0}
+
+    /* Рукоятка */
+    .joy-stick{
+      position:absolute;
+      width:56px;
+      height:56px;
+      left:50%;
+      top:50%;
+      margin-left:-28px;
+      margin-top:-28px;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 40% 35%, #ffffff 0%, #dce6f7 60%, #b8c7e3 100%);
+      border:2px solid rgba(255,255,255,.95);
+      box-shadow:
+        0 4px 12px rgba(80,110,180,.35),
+        inset 0 -3px 6px rgba(80,110,180,.15),
+        inset 0 2px 4px #fff;
+      transition:box-shadow .15s;
+      will-change:transform;
+      pointer-events:none;
+    }
+    .joystick.active .joy-stick{
+      box-shadow:
+        0 6px 20px rgba(76,201,240,.5),
+        inset 0 -3px 6px rgba(80,110,180,.15),
+        inset 0 2px 4px #fff;
+    }
+
+    /* ── Кнопки справа ── */
+    .action-buttons{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      flex-shrink:0;
+    }
+    .action-btn{
+      width:72px;
+      height:72px;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 40% 35%, #ffffff 0%, #e6ecf9 55%, #c8d4ec 100%);
+      border:2px solid rgba(255,255,255,.95);
+      box-shadow:
+        0 6px 18px rgba(80,110,180,.28),
+        inset 0 -3px 6px rgba(80,110,180,.12),
+        inset 0 2px 4px #fff;
+      color:#4a5a7a;
+      font-family:inherit;
+      font-size:26px;
+      font-weight:700;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      touch-action:none;
+      -webkit-tap-highlight-color:transparent;
+      transition:transform .08s, box-shadow .12s;
+      user-select:none;
+    }
+    .action-btn:active{
+      transform:scale(.94);
+      box-shadow:
+        0 3px 10px rgba(76,201,240,.4),
+        inset 0 -2px 4px rgba(80,110,180,.2),
+        inset 0 1px 3px rgba(255,255,255,.8);
+      color:#4cc9f0;
+    }
+    .action-btn.rotate{
+      background:
+        radial-gradient(circle at 40% 35%, #e8f9ff 0%, #c4e9f7 55%, #a3d5ef 100%);
+      color:#0073a8;
+    }
+    .action-btn.drop{
+      background:
+        radial-gradient(circle at 40% 35%, #f5e8ff 0%, #e2c8f7 55%, #cba3ef 100%);
+      color:#6a2599;
+    }
+    .action-btn-label{
+      font-size:8px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      font-family:'Inter', sans-serif;
+      font-weight:700;
+      margin-top:2px;
+      opacity:.7;
+    }
+
     .modal{padding:24px 20px}
     .modal .final{font-size:42px}
   }
 
-  /* Очень узкие экраны — ещё компактнее */
   @media (max-width:400px){
-    .side .stat b{font-size:13px}
+    .side .stat b{font-size:12px}
     .side .stat{font-size:8px}
-    .touch button{font-size:18px; padding:12px 0}
+    .joystick{width:110px; height:110px}
+    .joy-stick{width:48px; height:48px; margin-left:-24px; margin-top:-24px}
+    .action-btn{width:62px; height:62px; font-size:22px}
   }
 
-  /* Низкие экраны (пейзаж на телефоне) */
+  /* Пейзаж */
   @media (max-height:500px) and (max-width:820px){
-    .side.left{display:none}
-    .side.right{display:none}
+    .side.left,.side.right{display:none}
     .topbar{padding:4px 10px}
-    .topbar .user{font-size:12px}
+    .topbar .user{font-size:11px}
     .topbar .user small{display:none}
+    .joystick{width:100px; height:100px}
+    .joy-stick{width:44px; height:44px; margin-left:-22px; margin-top:-22px}
+    .action-btn{width:56px; height:56px; font-size:20px}
+    .controls{padding:6px 14px calc(6px + env(safe-area-inset-bottom, 0px))}
   }
 </style>
 </head>
@@ -500,18 +587,15 @@
 <div class="screen glass" id="auth">
   <div class="logo" id="logo" aria-label="TETRIS"></div>
   <p class="sub">Рекорды игроков</p>
-
   <div class="profile-pick" id="profilePick">
     <h3>Выбери профиль</h3>
     <div id="profileList"></div>
   </div>
-
   <div class="field">
     <label>Ник</label>
     <input id="inpNick" maxlength="16" placeholder="player" autocomplete="off">
   </div>
   <button class="btn btn-primary" id="btnEnter">Войти / Создать</button>
-
   <div class="err" id="authErr"></div>
 </div>
 
@@ -568,12 +652,22 @@
     </div>
   </div>
 
-  <div class="touch">
-    <button data-act="left">◀</button>
-    <button data-act="rotate">⟳</button>
-    <button data-act="down">▼</button>
-    <button data-act="drop">⤓</button>
-    <button data-act="right">▶</button>
+  <!-- ═══════ УПРАВЛЕНИЕ (только на мобильных) ═══════ -->
+  <div class="controls">
+    <!-- Джойстик слева -->
+    <div class="joystick" id="joystick">
+      <div class="joy-hint top">▲</div>
+      <div class="joy-hint bottom">▼</div>
+      <div class="joy-hint left">◀</div>
+      <div class="joy-hint right">▶</div>
+      <div class="joy-stick" id="joyStick"></div>
+    </div>
+
+    <!-- Кнопки действий справа -->
+    <div class="action-buttons">
+      <button class="action-btn rotate" id="btnRotate" data-act="rotate">⟳</button>
+      <button class="action-btn drop"   id="btnDrop"   data-act="drop">⤓</button>
+    </div>
   </div>
 </div>
 
@@ -592,7 +686,7 @@
 'use strict';
 
 /* ══════════════════════════════════════════════
-   ЛОГОТИП TETRIS ИЗ БЛОКОВ
+   ЛОГОТИП
    ══════════════════════════════════════════════ */
 const LETTERS = {
   T: { rows:5, cols:3, color:'#22d3ee', pattern:[[1,1,1],[0,1,0],[0,1,0],[0,1,0],[0,1,0]] },
@@ -635,7 +729,6 @@ const BG_SHAPES = [
 ];
 let bgW=0, bgH=0, bgDpr=1, bgPieces=[];
 const BG_PIECE_COUNT = 18;
-
 function resizeBg(){
   bgDpr = Math.min(window.devicePixelRatio || 1, 1.5);
   bgW = window.innerWidth; bgH = window.innerHeight;
@@ -720,31 +813,15 @@ window.addEventListener('resize', () => { resizeBg(); initBgPieces(); });
    ПРОФИЛИ
    ══════════════════════════════════════════════ */
 const LS_USERS='tetris_users_v1', LS_SESSION='tetris_session_v1';
-
-function safeGet(key){
-  try { return localStorage.getItem(key); } catch(e){ return null; }
-}
-function safeSet(key, val){
-  try { localStorage.setItem(key, val); } catch(e){}
-}
-function safeRemove(key){
-  try { localStorage.removeItem(key); } catch(e){}
-}
-function loadUsers(){
-  try { return JSON.parse(safeGet(LS_USERS)) || {}; } catch(e){ return {}; }
-}
-function saveUsers(u){
-  try { safeSet(LS_USERS, JSON.stringify(u)); }
-  catch(e){}
-}
+function safeGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+function safeSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+function safeRemove(k){ try { localStorage.removeItem(k); } catch(e){} }
+function loadUsers(){ try { return JSON.parse(safeGet(LS_USERS)) || {}; } catch(e){ return {}; } }
+function saveUsers(u){ safeSet(LS_USERS, JSON.stringify(u)); }
 function getSession(){ return safeGet(LS_SESSION); }
-function setSession(nick){
-  if (nick) safeSet(LS_SESSION, nick);
-  else safeRemove(LS_SESSION);
-}
+function setSession(n){ if (n) safeSet(LS_SESSION, n); else safeRemove(LS_SESSION); }
 
-let currentUser = null;
-let usersCache = {};
+let currentUser = null, usersCache = {};
 
 function enterAs(nick){
   nick = String(nick || '').trim();
@@ -769,8 +846,7 @@ function openApp(){
   renderProfile(); refreshLeaderboard(); resetGame();
 }
 function logout(){
-  setSession(null);
-  currentUser = null;
+  setSession(null); currentUser = null;
   document.getElementById('app').classList.remove('active');
   document.getElementById('auth').style.display = 'block';
   document.getElementById('overModal').classList.remove('show');
@@ -790,14 +866,14 @@ function refreshProfileList(){
     div.innerHTML =
       '<span class="nick">' + escapeHtml(u.nick) + '</span>' +
       '<span><span class="best">' + (u.best || 0) + '</span>' +
-      '<span class="del" title="Удалить">✕</span></span>';
+      '<span class="del">✕</span></span>';
     div.addEventListener('click', (e) => {
       if (e.target.classList.contains('del')){
         e.stopPropagation();
         if (confirm('Удалить профиль «' + u.nick + '»?')){
-          const users = loadUsers();
-          delete users[u.nick.toLowerCase()];
-          saveUsers(users);
+          const us = loadUsers();
+          delete us[u.nick.toLowerCase()];
+          saveUsers(us);
           refreshProfileList();
         }
         return;
@@ -836,7 +912,7 @@ function saveResult(score, lines, level){
 function getLeaderboard(){
   const users = loadUsers();
   return Object.values(users)
-    .map(u => ({ nick: u.nick, best: u.best || 0, games: u.games || 0 }))
+    .map(u => ({ nick: u.nick, best: u.best || 0 }))
     .filter(u => u.best > 0)
     .sort((a,b) => b.best - a.best)
     .slice(0, 50);
@@ -852,9 +928,7 @@ function refreshLeaderboard(){
   lb.forEach((u, i) => {
     const tr = document.createElement('tr');
     if (meKey && u.nick.toLowerCase() === meKey) tr.className = 'me';
-    tr.innerHTML = '<td>' + (i+1) + '</td>' +
-                   '<td>' + escapeHtml(u.nick) + '</td>' +
-                   '<td>' + u.best + '</td>';
+    tr.innerHTML = '<td>' + (i+1) + '</td><td>' + escapeHtml(u.nick) + '</td><td>' + u.best + '</td>';
     tbody.appendChild(tr);
   });
 }
@@ -862,12 +936,8 @@ function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-/* ══════════════════════════════════════════════
-   АВТОРИЗАЦИЯ UI
-   ══════════════════════════════════════════════ */
 const authErr = document.getElementById('authErr');
 function showAuthErr(m){ authErr.textContent = m; authErr.classList.add('show'); }
-
 document.getElementById('btnEnter').onclick = () => {
   authErr.classList.remove('show');
   try { enterAs(document.getElementById('inpNick').value); }
@@ -893,7 +963,6 @@ const SHAPES = {
   Z:[[1,1,0],[0,1,1],[0,0,0]]
 };
 const TYPES = ['I','J','L','O','S','T','Z'];
-
 const CELLS = {};
 TYPES.forEach(t => {
   const m = SHAPES[t];
@@ -905,7 +974,6 @@ TYPES.forEach(t => {
   }
   CELLS[t] = {list,minX,minY,w:maxX-minX+1,h:maxY-minY+1};
 });
-
 const SPEEDS = [800,720,630,550,470,380,300,220,160,120,100,85,75,65,55,45,40,35,30,25];
 const LINE_SCORE = [0,100,300,500,800];
 const DAS=150, ARR=45, LOCK_DELAY=500;
@@ -1084,15 +1152,12 @@ function render(){
   const g = ctx.createLinearGradient(0,0,0,BH);
   g.addColorStop(0,'#ffffff'); g.addColorStop(1,'#f3f6ff');
   ctx.fillStyle = g; ctx.fillRect(0,0,BW,BH);
-
   ctx.strokeStyle = 'rgba(120,140,200,.10)';
   ctx.lineWidth = 1;
   for (let x=1;x<COLS;x++){ ctx.beginPath(); ctx.moveTo(x*SIZE,0); ctx.lineTo(x*SIZE,BH); ctx.stroke(); }
   for (let y=1;y<ROWS;y++){ ctx.beginPath(); ctx.moveTo(0,y*SIZE); ctx.lineTo(BW,y*SIZE); ctx.stroke(); }
-
   for (let y=0;y<ROWS;y++) for (let x=0;x<COLS;x++)
     if (board[y][x]) block(ctx, x*SIZE, y*SIZE, SIZE, COLORS[board[y][x]]);
-
   if (!gameOver && cur){
     let gy = cur.y;
     while (!collide(cur.matrix, cur.x, gy+1)) gy++;
@@ -1105,7 +1170,6 @@ function render(){
       if (cur.matrix[y][x] && cur.y+y>=0)
         block(ctx, (cur.x+x)*SIZE, (cur.y+y)*SIZE, SIZE, COLORS[cur.type]);
   }
-
   if (paused){
     ctx.fillStyle = 'rgba(255,255,255,.9)'; ctx.fillRect(0,0,BW,BH);
     ctx.textAlign='center'; ctx.textBaseline='middle';
@@ -1161,7 +1225,9 @@ function loop(t){
 
 function pressLeft(){ if (started && !gameOver && !paused){ heldDir=-1; dasTimer=0; arrTimer=0; move(-1); } }
 function pressRight(){ if (started && !gameOver && !paused){ heldDir=1; dasTimer=0; arrTimer=0; move(1); } }
+function releaseDir(){ heldDir = 0; }
 
+/* Клавиатура */
 document.addEventListener('keydown', e => {
   const k = e.key;
   if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '].includes(k)) e.preventDefault();
@@ -1188,26 +1254,110 @@ document.addEventListener('keyup', e => {
   if (e.key==='ArrowDown') softDrop = false;
 });
 
-document.querySelectorAll('.touch button').forEach(btn => {
-  const act = btn.dataset.act;
-  btn.addEventListener('pointerdown', e => {
-    e.preventDefault();
-    try { btn.setPointerCapture(e.pointerId); } catch(_){}
-    if (act==='left') pressLeft();
-    else if (act==='right') pressRight();
-    else if (act==='down') softDrop = true;
-    else if (act==='rotate') rotate(1);
-    else if (act==='drop') hardDrop();
-  });
-  const up = () => {
-    if (act==='left'  && heldDir===-1) heldDir=0;
-    if (act==='right' && heldDir=== 1) heldDir=0;
-    if (act==='down') softDrop = false;
-  };
-  btn.addEventListener('pointerup', up);
-  btn.addEventListener('pointercancel', up);
+/* ══════════════════════════════════════════════
+   ДЖОЙСТИК
+   ══════════════════════════════════════════════ */
+const joystick = document.getElementById('joystick');
+const joyStick = document.getElementById('joyStick');
+const joyHints = {
+  top:    joystick.querySelector('.joy-hint.top'),
+  bottom: joystick.querySelector('.joy-hint.bottom'),
+  left:   joystick.querySelector('.joy-hint.left'),
+  right:  joystick.querySelector('.joy-hint.right')
+};
+
+let joyPointerId = null;
+let joyActiveDir = null;   // 'left' | 'right' | 'down' | null
+const DEADZONE = 0.28;      // 28% от радиуса — мёртвая зона
+
+function getJoyCenter(){
+  const rect = joystick.getBoundingClientRect();
+  return { x: rect.left + rect.width/2, y: rect.top + rect.height/2, r: rect.width/2 };
+}
+function joyMove(dx, dy){
+  const stickR = joyStick.offsetWidth / 2;
+  const maxDist = joystick.offsetWidth/2 - stickR - 4;
+  const dist = Math.hypot(dx, dy);
+  const clamped = Math.min(dist, maxDist);
+  const angle = Math.atan2(dy, dx);
+  const x = Math.cos(angle) * clamped;
+  const y = Math.sin(angle) * clamped;
+  joyStick.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+
+  // Определяем направление
+  const nx = dx / (joystick.offsetWidth/2);
+  const ny = dy / (joystick.offsetWidth/2);
+
+  let newDir = null;
+  // Приоритет: сначала по горизонтали, если отклонение достаточное
+  if (Math.abs(nx) > DEADZONE && Math.abs(nx) >= Math.abs(ny)) {
+    newDir = nx < 0 ? 'left' : 'right';
+  } else if (ny > DEADZONE) {
+    newDir = 'down';
+  }
+
+  // Подсветка подсказок
+  Object.keys(joyHints).forEach(k => joyHints[k].classList.toggle('active', k === newDir));
+
+  if (newDir !== joyActiveDir){
+    // Смена направления
+    if (joyActiveDir === 'left' || joyActiveDir === 'right') releaseDir();
+    if (joyActiveDir === 'down') softDrop = false;
+    joyActiveDir = newDir;
+    if (newDir === 'left') pressLeft();
+    else if (newDir === 'right') pressRight();
+    else if (newDir === 'down') softDrop = true;
+  }
+}
+function joyReset(){
+  joyStick.style.transform = 'translate(0,0)';
+  Object.values(joyHints).forEach(h => h.classList.remove('active'));
+  if (joyActiveDir === 'left' || joyActiveDir === 'right') releaseDir();
+  if (joyActiveDir === 'down') softDrop = false;
+  joyActiveDir = null;
+}
+
+joystick.addEventListener('pointerdown', e => {
+  if (joyPointerId !== null) return;
+  e.preventDefault();
+  joyPointerId = e.pointerId;
+  joystick.classList.add('active');
+  try { joystick.setPointerCapture(e.pointerId); } catch(_){}
+
+  const c = getJoyCenter();
+  joyMove(e.clientX - c.x, e.clientY - c.y);
+});
+joystick.addEventListener('pointermove', e => {
+  if (e.pointerId !== joyPointerId) return;
+  e.preventDefault();
+  const c = getJoyCenter();
+  joyMove(e.clientX - c.x, e.clientY - c.y);
+});
+function joyEnd(e){
+  if (e.pointerId !== joyPointerId) return;
+  joyPointerId = null;
+  joystick.classList.remove('active');
+  joyReset();
+}
+joystick.addEventListener('pointerup', joyEnd);
+joystick.addEventListener('pointercancel', joyEnd);
+joystick.addEventListener('lostpointercapture', joyEnd);
+
+/* Кнопки действий */
+document.getElementById('btnRotate').addEventListener('pointerdown', e => {
+  e.preventDefault();
+  if (!started || gameOver || paused) return;
+  rotate(1);
+});
+document.getElementById('btnDrop').addEventListener('pointerdown', e => {
+  e.preventDefault();
+  if (!started || gameOver || paused) return;
+  hardDrop();
 });
 
+/* ══════════════════════════════════════════════
+   СТАРТ
+   ══════════════════════════════════════════════ */
 function resetGame(){
   board = [];
   for (let y=0;y<ROWS;y++){ const r=[]; for (let x=0;x<COLS;x++) r.push(null); board.push(r); }
