@@ -15,7 +15,6 @@
   body{
     margin:0; color:#1a2233;
     font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    font-feature-settings: "cv02","cv03","cv04","cv11";
     min-height:100dvh;
     display:flex; align-items:center; justify-content:center;
     padding:16px;
@@ -26,12 +25,7 @@
     overscroll-behavior:none;
     touch-action:manipulation;
   }
-
-  #bg{
-    position:fixed; inset:0; z-index:0;
-    display:block; width:100%; height:100%;
-    pointer-events:none;
-  }
+  #bg{position:fixed; inset:0; z-index:0; display:block; width:100%; height:100%; pointer-events:none}
 
   .glass{
     background:rgba(255,255,255,.78);
@@ -45,14 +39,9 @@
   /* ═══ ЭКРАН ВХОДА ═══ */
   .screen{
     width:100%; max-width:400px; padding:28px 26px;
-    position:relative; z-index:2;
-    text-align:center;
+    position:relative; z-index:2; text-align:center;
   }
-  .logo{
-    display:flex; justify-content:center; gap:3px;
-    margin:0 auto 6px; padding:2px 0;
-    user-select:none;
-  }
+  .logo{display:flex; justify-content:center; gap:3px; margin:0 auto 6px; padding:2px 0}
   .logo .letter{
     display:grid; gap:2px;
     opacity:0; transform:translateY(-14px);
@@ -75,10 +64,7 @@
                0 1px 2px rgba(0,0,0,.08);
     animation:pulse 3.6s ease-in-out infinite;
   }
-  @keyframes pulse{
-    0%,100%{filter:brightness(1)}
-    50%    {filter:brightness(1.12)}
-  }
+  @keyframes pulse{0%,100%{filter:brightness(1)} 50%{filter:brightness(1.12)}}
   .logo .letter .cell.empty{visibility:hidden}
   .screen p.sub{
     margin:16px 0 24px;
@@ -152,9 +138,7 @@
     color:#ff8c00; font-weight:700;
     font-family: 'Fraunces', ui-serif, Georgia, serif;
   }
-  .profile-pick .item .del{
-    margin-left:10px; color:#c8d2e6; padding:0 5px; font-size:14px;
-  }
+  .profile-pick .item .del{margin-left:10px; color:#c8d2e6; padding:0 5px; font-size:14px}
   .profile-pick .item .del:hover{color:#ff3b60}
 
   /* ═══ ИГРА ═══ */
@@ -182,8 +166,7 @@
     background:rgba(255,255,255,.7); color:#8894b0;
     border:2px solid rgba(120,140,200,.18); border-radius:10px;
     font-family:inherit; font-size:10px; cursor:pointer;
-    font-weight:700; letter-spacing:1.4px;
-    text-transform:uppercase;
+    font-weight:700; letter-spacing:1.4px; text-transform:uppercase;
   }
   .layout{
     display:flex; gap:16px; align-items:flex-start;
@@ -250,9 +233,6 @@
     font-family:'Fraunces', ui-serif, Georgia, serif;
   }
 
-  /* ═══ КНОПКИ УПРАВЛЕНИЯ (только для десктопа, скрыто по умолчанию) ═══ */
-  .touch{display:none}
-
   /* ═══ МОДАЛКА ═══ */
   .modal-bg{
     display:none; position:fixed; inset:0;
@@ -303,15 +283,10 @@
   .modal .record-badge.hidden{display:none}
 
   /* ═══════════════════════════════════════════
-     МОБИЛЬНАЯ ВЕРСИЯ + ДЖОЙСТИК
+     МОБИЛЬНАЯ ВЕРСИЯ — джойстик
      ═══════════════════════════════════════════ */
   @media (max-width:820px){
-    body{
-      align-items:stretch;
-      padding:0;
-      min-height:100dvh;
-      overflow:hidden;
-    }
+    body{align-items:stretch; padding:0; min-height:100dvh; overflow:hidden}
     #app{
       display:none;
       width:100%;
@@ -331,9 +306,7 @@
     }
     .topbar .user{font-size:12px}
     .topbar .user small{font-size:10px}
-    .topbar-actions button{
-      padding:5px 10px; font-size:9px;
-    }
+    .topbar-actions button{padding:5px 10px; font-size:9px}
 
     .layout{
       flex:1;
@@ -346,7 +319,6 @@
       overflow:hidden;
     }
 
-    /* Верхняя полоса со статистикой */
     .side{
       flex-direction:row;
       width:100%;
@@ -364,9 +336,7 @@
     }
     .side .panel h2{display:none}
     .side .panel:has(#hold),
-    .side .panel:has(#next){
-      display:none;
-    }
+    .side .panel:has(#next){display:none}
     .side .panel:has(.stat){
       display:flex;
       flex-direction:row;
@@ -383,10 +353,8 @@
 
     #board{
       flex:1;
-      width:auto;
-      height:auto;
-      max-width:100%;
-      max-height:100%;
+      width:auto; height:auto;
+      max-width:100%; max-height:100%;
       margin:0 auto;
       display:block;
       border-radius:10px;
@@ -399,10 +367,9 @@
     /* ═══════ ДЖОЙСТИК ═══════ */
     .controls{
       display:flex;
-      justify-content:space-between;
+      justify-content:center;
       align-items:center;
-      padding:10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
-      gap:16px;
+      padding:12px 16px calc(14px + env(safe-area-inset-bottom, 0px));
       flex-shrink:0;
       background:rgba(255,255,255,.6);
       backdrop-filter:blur(10px);
@@ -411,14 +378,13 @@
       touch-action:none;
     }
 
-    /* ── Джойстик ── */
     .joystick{
       position:relative;
-      width:130px;
-      height:130px;
+      width:160px;
+      height:160px;
       border-radius:50%;
       background:
-        radial-gradient(circle at 50% 45%, rgba(255,255,255,.95) 0%, rgba(240,244,255,.85) 100%);
+        radial-gradient(circle at 50% 45%, rgba(255,255,255,.95) 0%, rgba(235,241,255,.85) 100%);
       border:2px solid rgba(120,140,200,.25);
       box-shadow:
         0 8px 24px rgba(80,110,180,.18),
@@ -426,63 +392,67 @@
       touch-action:none;
       flex-shrink:0;
       overflow:hidden;
+      transition:box-shadow .15s;
     }
-    /* Стрелки-подсказки внутри джойстика */
-    .joystick::before,
-    .joystick::after{
-      content:"";
-      position:absolute;
-      left:50%; top:50%;
-      transform:translate(-50%,-50%);
-      color:rgba(120,140,200,.35);
-      font-size:20px;
-      pointer-events:none;
+    .joystick.active{
+      box-shadow:
+        0 8px 30px rgba(76,201,240,.35),
+        inset 0 2px 6px rgba(80,110,180,.08);
     }
-    .joystick::before{
-      content:"‹";
-      top:50%;
-      left:8px;
-      transform:translateY(-50%);
-      font-size:22px;
-    }
-    .joystick::after{
-      content:"›";
-      top:50%;
-      right:8px;
-      left:auto;
-      transform:translateY(-50%);
-      font-size:22px;
-    }
-    /* Область-крестовина: визуальные подсказки направлений */
+
+    /* Подсказки — стрелки по краям */
     .joy-hint{
       position:absolute;
       pointer-events:none;
-      color:rgba(120,140,200,.3);
-      font-size:14px;
+      color:rgba(120,140,200,.35);
+      font-size:16px;
       font-weight:700;
-      transition:color .12s;
+      transition:color .15s, transform .15s;
+      line-height:1;
     }
-    .joy-hint.top{top:8px; left:50%; transform:translateX(-50%)}
-    .joy-hint.bottom{bottom:8px; left:50%; transform:translateX(-50%)}
-    .joy-hint.left{left:8px; top:50%; transform:translateY(-50%)}
-    .joy-hint.right{right:8px; top:50%; transform:translateY(-50%)}
+    .joy-hint.top{top:10px; left:50%; transform:translateX(-50%)}
+    .joy-hint.bottom{bottom:10px; left:50%; transform:translateX(-50%)}
+    .joy-hint.left{left:10px; top:50%; transform:translateY(-50%)}
+    .joy-hint.right{right:10px; top:50%; transform:translateY(-50%)}
     .joy-hint.active{color:#4cc9f0}
+    .joy-hint.bottom.fast{color:#a855f7; transform:translateX(-50%) scale(1.35)}
+
+    /* Подсказка про центр */
+    .joy-center-hint{
+      position:absolute;
+      left:50%; top:50%;
+      transform:translate(-50%, -50%);
+      color:rgba(120,140,200,.4);
+      font-size:18px;
+      pointer-events:none;
+      transition:opacity .15s, color .15s;
+      line-height:1;
+    }
+    .joystick.tapped .joy-center-hint{
+      color:#a855f7;
+      animation:centerPulse .35s ease-out;
+    }
+    @keyframes centerPulse{
+      0%  {transform:translate(-50%,-50%) scale(1);   opacity:1}
+      50% {transform:translate(-50%,-50%) scale(1.6); opacity:.9}
+      100%{transform:translate(-50%,-50%) scale(1);   opacity:.4}
+    }
 
     /* Рукоятка */
     .joy-stick{
       position:absolute;
-      width:56px;
-      height:56px;
+      width:70px;
+      height:70px;
       left:50%;
       top:50%;
-      margin-left:-28px;
-      margin-top:-28px;
+      margin-left:-35px;
+      margin-top:-35px;
       border-radius:50%;
       background:
         radial-gradient(circle at 40% 35%, #ffffff 0%, #dce6f7 60%, #b8c7e3 100%);
       border:2px solid rgba(255,255,255,.95);
       box-shadow:
-        0 4px 12px rgba(80,110,180,.35),
+        0 4px 14px rgba(80,110,180,.35),
         inset 0 -3px 6px rgba(80,110,180,.15),
         inset 0 2px 4px #fff;
       transition:box-shadow .15s;
@@ -491,68 +461,9 @@
     }
     .joystick.active .joy-stick{
       box-shadow:
-        0 6px 20px rgba(76,201,240,.5),
+        0 6px 22px rgba(76,201,240,.55),
         inset 0 -3px 6px rgba(80,110,180,.15),
         inset 0 2px 4px #fff;
-    }
-
-    /* ── Кнопки справа ── */
-    .action-buttons{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      flex-shrink:0;
-    }
-    .action-btn{
-      width:72px;
-      height:72px;
-      border-radius:50%;
-      background:
-        radial-gradient(circle at 40% 35%, #ffffff 0%, #e6ecf9 55%, #c8d4ec 100%);
-      border:2px solid rgba(255,255,255,.95);
-      box-shadow:
-        0 6px 18px rgba(80,110,180,.28),
-        inset 0 -3px 6px rgba(80,110,180,.12),
-        inset 0 2px 4px #fff;
-      color:#4a5a7a;
-      font-family:inherit;
-      font-size:26px;
-      font-weight:700;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      touch-action:none;
-      -webkit-tap-highlight-color:transparent;
-      transition:transform .08s, box-shadow .12s;
-      user-select:none;
-    }
-    .action-btn:active{
-      transform:scale(.94);
-      box-shadow:
-        0 3px 10px rgba(76,201,240,.4),
-        inset 0 -2px 4px rgba(80,110,180,.2),
-        inset 0 1px 3px rgba(255,255,255,.8);
-      color:#4cc9f0;
-    }
-    .action-btn.rotate{
-      background:
-        radial-gradient(circle at 40% 35%, #e8f9ff 0%, #c4e9f7 55%, #a3d5ef 100%);
-      color:#0073a8;
-    }
-    .action-btn.drop{
-      background:
-        radial-gradient(circle at 40% 35%, #f5e8ff 0%, #e2c8f7 55%, #cba3ef 100%);
-      color:#6a2599;
-    }
-    .action-btn-label{
-      font-size:8px;
-      letter-spacing:1px;
-      text-transform:uppercase;
-      font-family:'Inter', sans-serif;
-      font-weight:700;
-      margin-top:2px;
-      opacity:.7;
     }
 
     .modal{padding:24px 20px}
@@ -562,21 +473,18 @@
   @media (max-width:400px){
     .side .stat b{font-size:12px}
     .side .stat{font-size:8px}
-    .joystick{width:110px; height:110px}
-    .joy-stick{width:48px; height:48px; margin-left:-24px; margin-top:-24px}
-    .action-btn{width:62px; height:62px; font-size:22px}
+    .joystick{width:140px; height:140px}
+    .joy-stick{width:60px; height:60px; margin-left:-30px; margin-top:-30px}
   }
 
-  /* Пейзаж */
   @media (max-height:500px) and (max-width:820px){
     .side.left,.side.right{display:none}
     .topbar{padding:4px 10px}
     .topbar .user{font-size:11px}
     .topbar .user small{display:none}
-    .joystick{width:100px; height:100px}
-    .joy-stick{width:44px; height:44px; margin-left:-22px; margin-top:-22px}
-    .action-btn{width:56px; height:56px; font-size:20px}
-    .controls{padding:6px 14px calc(6px + env(safe-area-inset-bottom, 0px))}
+    .joystick{width:120px; height:120px}
+    .joy-stick{width:52px; height:52px; margin-left:-26px; margin-top:-26px}
+    .controls{padding:8px 14px calc(8px + env(safe-area-inset-bottom, 0px))}
   }
 </style>
 </head>
@@ -652,21 +560,15 @@
     </div>
   </div>
 
-  <!-- ═══════ УПРАВЛЕНИЕ (только на мобильных) ═══════ -->
+  <!-- ═══════ ДЖОЙСТИК ═══════ -->
   <div class="controls">
-    <!-- Джойстик слева -->
     <div class="joystick" id="joystick">
       <div class="joy-hint top">▲</div>
-      <div class="joy-hint bottom">▼</div>
+      <div class="joy-hint bottom" id="joyHintBottom">▼</div>
       <div class="joy-hint left">◀</div>
       <div class="joy-hint right">▶</div>
+      <div class="joy-center-hint" id="joyCenterHint">⟳</div>
       <div class="joy-stick" id="joyStick"></div>
-    </div>
-
-    <!-- Кнопки действий справа -->
-    <div class="action-buttons">
-      <button class="action-btn rotate" id="btnRotate" data-act="rotate">⟳</button>
-      <button class="action-btn drop"   id="btnDrop"   data-act="drop">⤓</button>
     </div>
   </div>
 </div>
@@ -696,23 +598,21 @@ const LETTERS = {
   S: { rows:5, cols:3, color:'#22c55e', pattern:[[0,1,1],[1,0,0],[0,1,0],[0,0,1],[1,1,0]] }
 };
 function buildLogo(){
-  const container = document.getElementById('logo');
-  if (!container) return;
+  const c = document.getElementById('logo');
+  if (!c) return;
   ['T','E','T','R','I','S'].forEach(ch => {
     const letter = LETTERS[ch];
     if (!letter) return;
-    const letterEl = document.createElement('div');
-    letterEl.className = 'letter';
-    letterEl.style.gridTemplateColumns = 'repeat(' + letter.cols + ', 1fr)';
-    for (let y = 0; y < letter.rows; y++){
-      for (let x = 0; x < letter.cols; x++){
-        const cell = document.createElement('div');
-        cell.className = 'cell' + (letter.pattern[y][x] ? '' : ' empty');
-        if (letter.pattern[y][x]) cell.style.background = letter.color;
-        letterEl.appendChild(cell);
-      }
+    const el = document.createElement('div');
+    el.className = 'letter';
+    el.style.gridTemplateColumns = 'repeat(' + letter.cols + ', 1fr)';
+    for (let y=0;y<letter.rows;y++) for (let x=0;x<letter.cols;x++){
+      const cell = document.createElement('div');
+      cell.className = 'cell' + (letter.pattern[y][x] ? '' : ' empty');
+      if (letter.pattern[y][x]) cell.style.background = letter.color;
+      el.appendChild(cell);
     }
-    container.appendChild(letterEl);
+    c.appendChild(el);
   });
 }
 buildLogo();
@@ -1255,8 +1155,13 @@ document.addEventListener('keyup', e => {
 });
 
 /* ══════════════════════════════════════════════
-   ДЖОЙСТИК
-   ══════════════════════════════════════════════ */
+   ДЖОЙСТИК С ТАПОМ ПО ЦЕНТРУ И HARD DROP
+   ══════════════════════════════════════════════
+   - Влево / вправо — движение
+   - Вниз (до 85% радиуса) — soft drop
+   - Резко вниз до упора (> 88%) — hard drop
+   - Тап по центру (без сдвига) — поворот
+*/
 const joystick = document.getElementById('joystick');
 const joyStick = document.getElementById('joyStick');
 const joyHints = {
@@ -1267,54 +1172,89 @@ const joyHints = {
 };
 
 let joyPointerId = null;
-let joyActiveDir = null;   // 'left' | 'right' | 'down' | null
-const DEADZONE = 0.28;      // 28% от радиуса — мёртвая зона
+let joyActiveDir = null;      // 'left' | 'right' | 'down'
+let joyStartTime = 0;
+let joyStartX = 0, joyStartY = 0;
+let joyMaxDist = 0;           // максимальное отклонение за сессию
+
+const DEADZONE      = 0.28;   // 28% — порог начала движения по стороне
+const TAP_MAX_DIST  = 0.15;   // до 15% — считаем тапом (поворот)
+const TAP_MAX_TIME  = 250;    // до 250мс — считаем тапом
+const FAST_DROP_ZONE = 0.85;  // >85% по вертикали вниз — hard drop
 
 function getJoyCenter(){
-  const rect = joystick.getBoundingClientRect();
-  return { x: rect.left + rect.width/2, y: rect.top + rect.height/2, r: rect.width/2 };
+  const r = joystick.getBoundingClientRect();
+  return { x: r.left + r.width/2, y: r.top + r.height/2, r: r.width/2 };
 }
 function joyMove(dx, dy){
   const stickR = joyStick.offsetWidth / 2;
   const maxDist = joystick.offsetWidth/2 - stickR - 4;
   const dist = Math.hypot(dx, dy);
+  joyMaxDist = Math.max(joyMaxDist, dist);
+
   const clamped = Math.min(dist, maxDist);
   const angle = Math.atan2(dy, dx);
   const x = Math.cos(angle) * clamped;
   const y = Math.sin(angle) * clamped;
   joyStick.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
 
-  // Определяем направление
-  const nx = dx / (joystick.offsetWidth/2);
-  const ny = dy / (joystick.offsetWidth/2);
+  const radius = joystick.offsetWidth / 2;
+  const nx = dx / radius;
+  const ny = dy / radius;
+  const vertRatio = ny; // положительное = вниз
+
+  // ─── Приоритет: вниз ───
+  // Если палец ушёл сильно вниз — hard drop.
+  // Если умеренно — soft drop.
+  // Иначе — влево/вправо.
 
   let newDir = null;
-  // Приоритет: сначала по горизонтали, если отклонение достаточное
-  if (Math.abs(nx) > DEADZONE && Math.abs(nx) >= Math.abs(ny)) {
-    newDir = nx < 0 ? 'left' : 'right';
-  } else if (ny > DEADZONE) {
+  let hardDropped = false;
+
+  if (vertRatio > FAST_DROP_ZONE && Math.abs(nx) < 0.5){
+    // Резкий сброс — но выполняем один раз
+    if (joyActiveDir !== 'drop'){
+      newDir = 'drop';
+      hardDropped = true;
+    } else {
+      newDir = 'drop';
+    }
+  } else if (vertRatio > DEADZONE && Math.abs(nx) < Math.abs(vertRatio)){
     newDir = 'down';
+  } else if (Math.abs(nx) > DEADZONE){
+    newDir = nx < 0 ? 'left' : 'right';
   }
 
   // Подсветка подсказок
   Object.keys(joyHints).forEach(k => joyHints[k].classList.toggle('active', k === newDir));
+  joyHints.bottom.classList.toggle('fast', newDir === 'drop' || vertRatio > FAST_DROP_ZONE);
 
   if (newDir !== joyActiveDir){
-    // Смена направления
+    // Сбрасываем предыдущий режим
     if (joyActiveDir === 'left' || joyActiveDir === 'right') releaseDir();
     if (joyActiveDir === 'down') softDrop = false;
+
     joyActiveDir = newDir;
+
     if (newDir === 'left') pressLeft();
     else if (newDir === 'right') pressRight();
     else if (newDir === 'down') softDrop = true;
+    else if (newDir === 'drop' && hardDropped) hardDrop();
   }
 }
 function joyReset(){
   joyStick.style.transform = 'translate(0,0)';
-  Object.values(joyHints).forEach(h => h.classList.remove('active'));
+  Object.values(joyHints).forEach(h => { h.classList.remove('active'); h.classList.remove('fast'); });
   if (joyActiveDir === 'left' || joyActiveDir === 'right') releaseDir();
   if (joyActiveDir === 'down') softDrop = false;
   joyActiveDir = null;
+}
+
+/* Тап по центру → поворот */
+function triggerCenterTap(){
+  joystick.classList.add('tapped');
+  rotate(1);
+  setTimeout(() => joystick.classList.remove('tapped'), 350);
 }
 
 joystick.addEventListener('pointerdown', e => {
@@ -1324,17 +1264,34 @@ joystick.addEventListener('pointerdown', e => {
   joystick.classList.add('active');
   try { joystick.setPointerCapture(e.pointerId); } catch(_){}
 
+  joyStartTime = performance.now();
+  joyStartX = e.clientX;
+  joyStartY = e.clientY;
+  joyMaxDist = 0;
+
   const c = getJoyCenter();
   joyMove(e.clientX - c.x, e.clientY - c.y);
 });
+
 joystick.addEventListener('pointermove', e => {
   if (e.pointerId !== joyPointerId) return;
   e.preventDefault();
   const c = getJoyCenter();
   joyMove(e.clientX - c.x, e.clientY - c.y);
 });
+
 function joyEnd(e){
   if (e.pointerId !== joyPointerId) return;
+
+  const dt = performance.now() - joyStartTime;
+  const radius = joystick.offsetWidth / 2;
+  const tapDist = TAP_MAX_DIST * radius;
+
+  // Тап — быстрое касание без существенного сдвига
+  if (dt < TAP_MAX_TIME && joyMaxDist < tapDist){
+    triggerCenterTap();
+  }
+
   joyPointerId = null;
   joystick.classList.remove('active');
   joyReset();
@@ -1342,18 +1299,6 @@ function joyEnd(e){
 joystick.addEventListener('pointerup', joyEnd);
 joystick.addEventListener('pointercancel', joyEnd);
 joystick.addEventListener('lostpointercapture', joyEnd);
-
-/* Кнопки действий */
-document.getElementById('btnRotate').addEventListener('pointerdown', e => {
-  e.preventDefault();
-  if (!started || gameOver || paused) return;
-  rotate(1);
-});
-document.getElementById('btnDrop').addEventListener('pointerdown', e => {
-  e.preventDefault();
-  if (!started || gameOver || paused) return;
-  hardDrop();
-});
 
 /* ══════════════════════════════════════════════
    СТАРТ
